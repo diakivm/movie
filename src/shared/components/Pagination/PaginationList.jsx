@@ -39,9 +39,9 @@ export default function PaginationList({pagination, setPagination}) {
                                     {
                                         leftArray.map(item => {
                                           return pagination.currentPage === item ? 
-                                                                                <Pagination.Item active onClick={() => changePageR(item)}>{item}</Pagination.Item>
+                                                                                <Pagination.Item key={item} active onClick={() => changePageR(item)}>{item}</Pagination.Item>
                                                                                 :
-                                                                                <Pagination.Item onClick={() => changePageR(item)}>{item}</Pagination.Item>
+                                                                                <Pagination.Item key={item} onClick={() => changePageR(item)}>{item}</Pagination.Item>
 
                                         })
                                       }
@@ -55,9 +55,9 @@ export default function PaginationList({pagination, setPagination}) {
                                       {
                                       rightArray.map(item => {
                                           return pagination.currentPage === item ? 
-                                                                                <Pagination.Item active onClick={() => changePageR(item)}>{item}</Pagination.Item>
+                                                                                <Pagination.Item key={item} active onClick={() => changePageR(item)}>{item}</Pagination.Item>
                                                                                 :
-                                                                                <Pagination.Item onClick={() => changePageR(item)}>{item}</Pagination.Item>
+                                                                                <Pagination.Item key={item} onClick={() => changePageR(item)}>{item}</Pagination.Item>
 
                                         })
                                       }
