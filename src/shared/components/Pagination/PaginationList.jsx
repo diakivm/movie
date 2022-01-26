@@ -1,6 +1,9 @@
 import React from 'react';
 import {Pagination} from 'react-bootstrap'
 
+import './PaginationList.scss'
+
+
 export default function PaginationList({pagination, setPagination}) {
 
   let leftArray = [1,2,3,4]

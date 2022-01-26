@@ -1,32 +1,53 @@
 import React from 'react'
-import {Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
+import {Navbar, Container, Form, FormControl, Button} from 'react-bootstrap'
+import MovieContext from '../../context/MovieContext'
+import {Link} from 'react-router-dom'
 import './Header.scss'
 
-export default function Header() {
+export default function Header() {   
+
+   let {searchQuery, setSearchQuery, getFilmsByQuery} = React.useContext(MovieContext)
+
    return (
-         <Navbar bg="warning" expand="lg">
+         <Navbar className='header' bg="warning" expand="lg">
             <Container fluid>
-               <Navbar.Brand href="#">Movie</Navbar.Brand>
+               <Link to="/">
+                  <h1 className='header__logo' >movie.</h1>
+               </Link>
                <Navbar.Toggle aria-controls="navbarScroll" />
                <Navbar.Collapse id="navbarScroll">
-                  <Nav
-                     className="me-auto my-2 my-lg-0"
-                     style={{ maxHeight: '100px' }}
-                     navbarScroll
-                     >
-                     <Nav.Link href="#action1">Home</Nav.Link>
-                     <Nav.Link href="#action2">Movies</Nav.Link>
-                     <Nav.Link href="#action3">Seriales</Nav.Link>
-                  </Nav>
-                  <Form className="d-flex">
-                  <FormControl
-                     type="search"
-                     placeholder="Search"
-                     className="me-2"
-                     aria-label="Search"
-                  />
-                  <Button variant="light">Search</Button>
-                  </Form>
+
+                     <ul className='header__link-items'>
+                         <li className='header__link-item'>
+                            <Link to='/home'>Home</Link>
+                         </li>
+                         <li className='header__link-item'>
+                            <Link to='/movies'>Movies</Link>
+                         </li>
+                         <li className='header__link-item'>
+                            <Link to='/seriales'>Seriales</Link>
+                         </li>
+                     </ul>
+                     <div style={{flex:'1'}}></div>
+                     <Form className="d-flex"
+                           onSubmit={getFilmsByQuery}
+                           >
+                     <FormControl
+                              type="search"
+                              placeholder="Пошук..."
+                              className="me-2"
+                              aria-label="Search"
+                              className="header__search no-outline"
+                              value={searchQuery}
+                              onChange={(e) => setSearchQuery(e.target.value)}
+                           />
+                           
+                     <Button variant="light"
+                             className="header__btn-search no-outline"
+                             onClick={getFilmsByQuery}
+                             >Знайти</Button>
+                     </Form>
+
                </Navbar.Collapse>
             </Container>
    </Navbar>

@@ -1,0 +1,24 @@
+.page {
+
+   &__main {
+   }
+}
+.section {
+
+   &__slider-now-paying {
+   }
+
+   &__media-list {
+   }
+}
+.media-list {
+
+   &__list {
+   }
+
+   &__pagination {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+   }
+}
